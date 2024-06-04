@@ -1,0 +1,89 @@
+<style>
+  /* Style for the form container */
+
+  body{
+     background-image: url('/assets/back.jpeg');
+  }
+  .blog-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  /* Style for error messages */
+  .error-message {
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  /* Style for form labels */
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  /* Style for form inputs */
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  /* Style for submit button */
+  input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Hover effect for the submit button */
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="blog-form">
+  <% if post.errors.any? %>
+    <div class="error-message">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_with(model: post, class: "blog-form") do |form| %>
+  <div>
+  <%= form.label :username, "Username:" %>
+  <%= form.text_field :username %>
+</div>
+
+
+
+
+    <div>
+      <%= form.label :headline %>
+      <%= form.text_field :headline %>
+    </div>
+
+
+    <div>
+      <%= form.label :disc %>
+      <%= form.text_field :disc %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

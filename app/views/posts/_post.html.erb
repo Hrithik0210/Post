@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+  <style>
+    /* Your CSS styles here */
+  </style>
+</head>
+<body>
+
+<div id="<%= dom_id(post) %>">
+  <p>
+    <strong><%= image_tag("icon.png", class: "icon", size: "25x25") %></strong>
+    <span class="username"><%= post.username %></span>
+  </p>
+
+  <p class="headline">
+    <strong></strong>
+    <%= post.headline %>
+  </p>
+
+  <!-- Description container with flexbox -->
+  <div class="description-container">
+    <!-- Description -->
+    <p class="disc">
+      <strong></strong>
+      <%= post.disc %>
+    </p>
+
+    <!-- Image -->
+    <%= image_tag("zoomcar.jpg", class: "description-image") %>
+  </div>
+
+  <!-- Text field for post -->
+
+  
+<%= form_for Comment.new, url: comments_path do |f| %>
+  <%= f.text_area :comments, placeholder: "Write your comment here...", class: "comment-box" %>
+  <%= f.submit "Post", class: "post-button" %>
+<% end %>
+
+<!-- JavaScript function to handle the click event on the Blike_icon -->
+<script>
+function changeImage() {
+  var image = document.getElementById("Blike_icon");
+  image.src = "after_like.png"; // Change the image source to after_like.png
+}
+</script>
+
+</body>
+</html>

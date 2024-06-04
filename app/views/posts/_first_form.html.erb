@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to My Blog</title>
+  <style>
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end; /* Align content to the right side */
+  align-items: center;
+  background-image: url('/assets/back1.jpeg');
+  background-size: cover;
+}
+
+#editFormContainer {
+  display: flex;
+  justify-content: flex-start; /* Align content to the left side */
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: auto; /* Push the container to the left */
+}
+
+#editForm {
+  background-color: #fff;
+  padding: 60px;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+button[type="submit"], button[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 15px;
+}
+
+button[type="submit"]:hover, button[type="button"]:hover {
+  background-color: #45a049;
+}
+
+  </style>
+</head>
+<body>
+
+
+  <div id="editFormContainer">
+    <div id="editForm">
+      <h1 style="text-align: center; margin-bottom: 20px;">Welcome to My Blog</h1>
+      <form action="<%= users_path(username: params[:username]) %>" method="post" id="editForm">
+        <label for="username">Enter your username:</label>
+        <input type="text" id="username" name="user[name]" required>
+        <button type="submit" onclick="submitForm()">New Blog</button>
+        <%= link_to "Show Blogs", posts_path, method: :get, remote: true, class: "button" %>
+      </form>
+    </div>
+  </div>
+
+
+ 
+
+  <script>
+    function showBlogs() {
+      // Redirect to the page where you show the blogs
+      window.location.href = "/blogs"; // Adjust the URL according to your routes
+    }
+
+    function submitForm() {
+  var username = document.getElementById("username").value;
+  var form = document.getElementById("username");
+}
+
+  </script>
+</body>
+</html>
